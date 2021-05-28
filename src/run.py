@@ -97,8 +97,23 @@ def run_task(task):
           lineterminator="\n"
         )
         writer.writeheader()
-        for tool, row in results.items():
-            writer.writerow(row)
+        tools = sorted(list(results.keys()))
+        for tool in tools:
+            writer.writerow(results[tool])
+
+    summary_md = os.path.join(RESULT_DIR, task, "summary.md")
+    print("Writing", summary_md)
+    with open(summary) as f:
+        rows = csv.reader(f, delimiter="\t")
+        with open(summary_md, "w") as s:
+            row = next(rows)
+            s.write(" | ".join(row) + "\n")
+            s.write(" | ".join("---" for r in row) + "\n")
+            for row in rows:
+                tool = row[0]
+                if tool in links:
+                    row[0] = f"[{tool}]({links[tool]})"
+                s.write(" | ".join(row) + "\n")
 
     return results
 

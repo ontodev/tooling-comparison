@@ -16,14 +16,16 @@ OBO    | X     |            |
 OFN    | X     |            |
 OMN    | X     |            |
 
-## Harness
+## Results
 
-We use ROBOT to check that the output matches the input.
-
-```sh
-time -v sh task.sh > results.txt
-robot diff --left /work/example/obi_core.owl --right obi_core.ttl --output obi_core.diff
-```
+Tool | Exit status | Maximum resident set size (kbytes) | User time (seconds) | Percent of CPU this job got
+--- | --- | --- | --- | ---
+[horned-owl](https://github.com/phillord/horned-owl) |  |  |  | 
+[py-horned-owl](https://github.com/jannahastings/py-horned-owl) |  |  |  | 
+[rapper](https://librdf.org/raptor/) | 127 | 1644 | 0.00 | 20%
+[rdftab-thick](https://github.com/ontodev/rdftab.rs) | 2 | 1648 | 0.00 | 14%
+[rdftab-thin](https://github.com/ontodev/rdftab.rs) | 2 | 1696 | 0.00 | 16%
+[robot](http://robot.obolibrary.org) | 0 | 148272 | 2.81 | 250%
 
 ## Tools
 
