@@ -21,6 +21,20 @@ These are relevant tools that we will consider testing:
 - [funowl](https://github.com/hsolbrig/funowl)
 - [owlready2](https://github.com/pwin/owlready2)
 
+## Tasks
+
+These are some relevant tasks we will consider including:
+
+- read ontology: e.g. `robot annotate`
+- convert ontology: e.g. `robot convert`
+- extract labels: e.g. `robot export`
+- extract term: e.g. `robot extract`
+- get subclasses of a term:
+- get interesting axioms from a term:
+- update label: e.g. `robot rename`
+- update axiom: 
+
+
 ## Run
 
 The various tools are packaged in a Docker container
