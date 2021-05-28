@@ -19,13 +19,13 @@ OMN    | X     |            |
 ## Results
 
 Tool | Exit status | Maximum resident set size (kbytes) | User time (seconds) | Percent of CPU this job got
---- | --- | --- | --- | ---
+--- | --: | --: | --: | --:
 [horned-owl](https://github.com/phillord/horned-owl) |  |  |  | 
 [py-horned-owl](https://github.com/jannahastings/py-horned-owl) |  |  |  | 
-[rapper](https://librdf.org/raptor/) | 127 | 1644 | 0.00 | 20%
-[rdftab-thick](https://github.com/ontodev/rdftab.rs) | 2 | 1648 | 0.00 | 14%
-[rdftab-thin](https://github.com/ontodev/rdftab.rs) | 2 | 1696 | 0.00 | 16%
-[robot](http://robot.obolibrary.org) | 0 | 148272 | 2.81 | 250%
+[rapper](https://librdf.org/raptor/) | 127 | 1644 | 0.00 | 12%
+[rdftab-thick](https://github.com/ontodev/rdftab.rs) | 2 | 1692 | 0.00 | 16%
+[rdftab-thin](https://github.com/ontodev/rdftab.rs) | 2 | 1584 | 0.00 | 16%
+[robot](http://robot.obolibrary.org) | 0 | 146400 | 2.87 | 253%
 
 ## Tools
 

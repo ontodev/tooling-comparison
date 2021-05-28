@@ -108,7 +108,8 @@ def run_task(task):
         with open(summary_md, "w") as s:
             row = next(rows)
             s.write(" | ".join(row) + "\n")
-            s.write(" | ".join("---" for r in row) + "\n")
+            header = ["---"] + ["--:" for r in row[1:]]
+            s.write(" | ".join(header) + "\n")
             for row in rows:
                 tool = row[0]
                 if tool in links:
