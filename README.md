@@ -31,10 +31,15 @@ These are some relevant tasks we will consider including:
 - convert ontology: e.g. `robot convert`
 - extract labels: e.g. `robot export`
 - extract term: e.g. `robot extract`
-- get subclasses of a term:
-- get interesting axioms from a term:
+- get subclasses of a term
+  - direct children
+  - descendants
+  - direct parents
+  - ancestors
+- get interesting axioms from a term
+- run an interesting query
 - update label: e.g. `robot rename`
-- update axiom: 
+- update axiom
 
 
 ## Run
