@@ -99,7 +99,7 @@ def run_task(task):
                 continue
             script = os.path.join(path, filename)
             with open(script, "w") as f:
-                f.write("\n".join(lines))
+                f.write("".join(lines))
         result = os.path.join(path, "result.txt")
         print("Running", script)
         with open(result, "w") as f:
