@@ -1,4 +1,4 @@
-# Convert Ontology
+# Read Ontology
 
 The most basic thing we need to do is read files.
 
