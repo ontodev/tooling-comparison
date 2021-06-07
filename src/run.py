@@ -5,6 +5,8 @@ import os
 import shutil
 import subprocess
 
+from collections import defaultdict
+
 TASK_DIR = "task/"
 RESULT_DIR = "result/"
 SUMMARY_FIELDS = [
@@ -23,6 +25,34 @@ links = {
     "rapper": "https://librdf.org/raptor/",
 }
 
+
+def update_results(document, table):
+    """Given paths to a document and a table,
+    both in Markdown format,
+    replace the '## Results' section of the document
+    with the lines from the table."""
+    print("Updating", document)
+    with open(document) as f:
+        document_lines = list(f.readlines())
+    with open(table) as f:
+        table_lines = list(f.readlines())
+    results_section = False
+    output_lines = []
+    for line in document_lines:
+        if line.strip() == "## Results":
+            results_section = True
+            output_lines += [line, "\n"] + table_lines + ["\n"]
+            continue
+        if line.strip().startswith("#"):
+            results_section = False
+        if results_section:
+            continue
+        else:
+            output_lines.append(line)
+    with open(document, "w") as f:
+        f.write("".join(output_lines))
+
+
 def run_task(task):
     """Given a task name,
     read the Markdown file,
@@ -31,6 +61,7 @@ def run_task(task):
     fname = os.path.join(TASK_DIR, task + ".md")
     tools = None
     tool = None
+    filename = None
     script = False
     with open(fname) as f:
         for line in f.readlines():
@@ -45,27 +76,30 @@ def run_task(task):
                 tool = line.strip().lstrip("#").strip()
                 if tool in tools:
                     raise Exception(f"Duplicate tool specified: '{tool}'")
-                tools[tool] = []
+                tools[tool] = defaultdict(list)
                 continue
-            if line.strip().startswith("```sh"):
-                script = True
-                continue
-            if line.strip().startswith("```"):
+            if line.strip() == "```":
                 script = False
                 continue
+            if line.strip().startswith("```"):
+                script = True
+                format = line.strip().lstrip("`")
+                filename = f"test.{format}"
+                continue
             if tool and script:
-                tools[tool].append(line)
+                tools[tool][filename].append(line)
 
     results = {}
-    for tool, lines in tools.items():
+    for tool, scripts in tools.items():
         results[tool] = {"Tool": tool}
-        if not lines:
-            continue
         path = os.path.join(RESULT_DIR, task, tool)
         os.makedirs(path, exist_ok=True)
-        script = os.path.join(path, "test.sh")
-        with open(script, "w") as f:
-            f.write("\n".join(lines))
+        for filename, lines in scripts.items():
+            if not lines:
+                continue
+            script = os.path.join(path, filename)
+            with open(script, "w") as f:
+                f.write("\n".join(lines))
         result = os.path.join(path, "result.txt")
         print("Running", script)
         with open(result, "w") as f:
@@ -115,6 +149,8 @@ def run_task(task):
                 if tool in links:
                     row[0] = f"[{tool}]({links[tool]})"
                 s.write(" | ".join(row) + "\n")
+
+    update_results(fname, summary_md)
 
     return results
 
@@ -189,6 +225,7 @@ def run():
                 row[0] = f"[{row[0]}](task/{row[0]}.md)"
                 s.write(" | ".join(row) + "\n")
 
+    update_results("README.md", summary_md)
 
 if __name__ == "__main__":
     run()
