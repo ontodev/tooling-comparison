@@ -39,7 +39,24 @@ test -s obi_core.tsv
 
 ### py-horned-owl
 
-TODO
+We read OWLXML and then extract IDs and labels.
+
+```py
+import pyhornedowl
+
+onto = pyhornedowl.open_ontology('/work/example/obi_core.owx')
+results = set()
+
+for cls in onto.get_classes():
+    label = onto.get_annotation(cls,"http://www.w3.org/2000/01/rdf-schema#label")
+    id = onto.get_id_for_iri(cls)
+    results.add( (id,label) )
+
+```
+```sh
+python test.py
+```
+
 
 ### rdftab-thin
 
