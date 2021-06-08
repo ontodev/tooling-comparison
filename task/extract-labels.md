@@ -43,20 +43,21 @@ We read OWLXML and then extract IDs and labels.
 
 ```py
 import pyhornedowl
+import csv
 
 onto = pyhornedowl.open_ontology('/work/example/obi_core.owx')
-results = set()
-
-for cls in onto.get_classes():
-    label = onto.get_annotation(cls,"http://www.w3.org/2000/01/rdf-schema#label")
-    id = onto.get_id_for_iri(cls)
-    results.add( (id,label) )
-
+with open("obi_core.tsv", "w") as f:
+  w = csv.writer(f, delimiter="\t", lineterminator="\n")
+  w.writerow(["ID", "Label"])
+  for cls in onto.get_classes():
+      label = onto.get_annotation(cls, "http://www.w3.org/2000/01/rdf-schema#label")
+      id = onto.get_id_for_iri(cls)
+      w.writerow([id, label])
 ```
+
 ```sh
 python test.py
 ```
-
 
 ### rdftab-thin
 
