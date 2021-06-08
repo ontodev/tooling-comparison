@@ -6,12 +6,12 @@ A common task is extracting a set of IDs and labels from an ontology.
 
 Tool | Exit status | Maximum resident set size (kbytes) | User time (seconds) | Percent of CPU this job got
 --- | --: | --: | --: | --:
-[horned-owl](https://github.com/phillord/horned-owl) | 1 | 13696 | 0.01 | 83%
-[py-horned-owl](https://github.com/jannahastings/py-horned-owl) | 127 | 1704 | 0.00 | 0%
-[rapper](https://librdf.org/raptor/) | 0 | 11388 | 0.02 | 96%
-[rdftab-thick](https://github.com/ontodev/rdftab.rs) | 127 | 1644 | 0.00 | 33%
-[rdftab-thin](https://github.com/ontodev/rdftab.rs) | 0 | 4348 | 0.00 | 20%
-[robot](http://robot.obolibrary.org) | 0 | 141344 | 2.39 | 246%
+[horned-owl](https://github.com/phillord/horned-owl) | 1 | 13824 | 0.01 | 76%
+[py-horned-owl](https://github.com/jannahastings/py-horned-owl) | 0 | 15768 | 0.03 | 79%
+[rapper](https://librdf.org/raptor/) | 0 | 11280 | 0.01 | 93%
+[rdftab-thick](https://github.com/ontodev/rdftab.rs) | 127 | 1588 | 0.00 | 0%
+[rdftab-thin](https://github.com/ontodev/rdftab.rs) | 0 | 4288 | 0.00 | 18%
+[robot](http://robot.obolibrary.org) | 0 | 141448 | 2.21 | 242%
 
 ## Tools
 

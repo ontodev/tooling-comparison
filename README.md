@@ -7,7 +7,7 @@ Docs and tests comparing RDF and OWL tooling.
 Task | [horned-owl](https://github.com/phillord/horned-owl) | [py-horned-owl](https://github.com/jannahastings/py-horned-owl) | [rapper](https://librdf.org/raptor/) | [rdftab-thick](https://github.com/ontodev/rdftab.rs) | [rdftab-thin](https://github.com/ontodev/rdftab.rs) | [robot](http://robot.obolibrary.org)
 --- | --- | --- | --- | --- | --- | ---
 [convert-ontology](task/convert-ontology.md) | PASS | PASS | PASS | FAIL | PASS | PASS
-[extract-labels](task/extract-labels.md) | FAIL | FAIL | PASS | FAIL | PASS | PASS
+[extract-labels](task/extract-labels.md) | FAIL | PASS | PASS | FAIL | PASS | PASS
 [read-ontology](task/read-ontology.md) | PASS | PASS |  | FAIL | PASS | PASS
 
 ## Tools
