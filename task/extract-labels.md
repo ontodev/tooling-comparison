@@ -46,6 +46,7 @@ import pyhornedowl
 import csv
 
 onto = pyhornedowl.open_ontology('/work/example/obi_core.owx')
+onto.add_prefix_mapping("OBI","http://purl.obolibrary.org/obo/OBI_")
 with open("obi_core.tsv", "w") as f:
   w = csv.writer(f, delimiter="\t", lineterminator="\n")
   w.writerow(["ID", "Label"])
