@@ -39,7 +39,7 @@ test -s obi_core.tsv
 
 ### py-horned-owl
 
-We read OWLXML and then extract IDs and labels.
+We read OWLXML and then extract IRIs and labels.
 
 ```py
 import pyhornedowl
