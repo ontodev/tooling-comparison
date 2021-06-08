@@ -46,14 +46,12 @@ import pyhornedowl
 import csv
 
 onto = pyhornedowl.open_ontology('/work/example/obi_core.owx')
-onto.add_prefix_mapping("OBI","http://purl.obolibrary.org/obo/OBI_")
 with open("obi_core.tsv", "w") as f:
   w = csv.writer(f, delimiter="\t", lineterminator="\n")
-  w.writerow(["ID", "Label"])
+  w.writerow(["IRI", "Label"])
   for cls in onto.get_classes():
       label = onto.get_annotation(cls, "http://www.w3.org/2000/01/rdf-schema#label")
-      id = onto.get_id_for_iri(cls)
-      w.writerow([id, label])
+      w.writerow([cls, label])
 ```
 
 ```sh
